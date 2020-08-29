@@ -1,5 +1,6 @@
 rootProject.name = 'monorepo'
 
-include 'main-application'
-include 'weather-application'
+include 'spring-resources:shared-entities'
 
+include 'spring-applications:main-application'
+include 'spring-applications:weather-application'
