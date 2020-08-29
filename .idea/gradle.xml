@@ -9,8 +9,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/main-application" />
-            <option value="$PROJECT_DIR$/weather-application" />
+            <option value="$PROJECT_DIR$/spring-applications" />
+            <option value="$PROJECT_DIR$/spring-applications/main-application" />
+            <option value="$PROJECT_DIR$/spring-applications/weather-application" />
+            <option value="$PROJECT_DIR$/spring-resources" />
+            <option value="$PROJECT_DIR$/spring-resources/shared-entities" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
