@@ -1,0 +1,12 @@
+bootRun {
+    enabled = true
+    main = 'com.example.monorepo.MainApplication'
+}
+
+dependencies {
+
+}
+
+bootJar{
+    enabled = true
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'monorepo'
+
+include 'main-application'
+include 'weather-application'
+
