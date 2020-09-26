@@ -4,3 +4,4 @@ include 'spring-resources:shared-entities'
 
 include 'spring-applications:main-application'
 include 'spring-applications:weather-application'
+include 'spring-applications:eureka-application'

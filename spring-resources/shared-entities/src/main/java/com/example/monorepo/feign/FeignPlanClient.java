@@ -1,11 +1,10 @@
 package com.example.monorepo.feign;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
+@Component
+@FeignClient(name = "weather-application")
+public interface FeignPlanClient extends FeignPlanProvider {
 
-public interface FeignPlanProvider {
-
-    @GetMapping(value ="/weather/forecast")
-    List<Double> forecast(int days);
 }

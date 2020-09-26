@@ -1,8 +1,7 @@
-package com.example.monorepo;
+package com.example.monorepo.service;
 
 
 import com.example.monorepo.feign.FeignPlanClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +14,13 @@ import java.util.List;
 
 @Service
 public class PlanService {
-    
-    private final FeignPlanClient feignPlanClient;
+
+    private FeignPlanClient feignPlanClient;
 
     public PlanService(FeignPlanClient feignPlanClient) {
         this.feignPlanClient = feignPlanClient;
     }
+
 
     public List<Boolean> canGoOutsideForWeek(double threshold) {
         RestTemplate restTemplate = new RestTemplate();

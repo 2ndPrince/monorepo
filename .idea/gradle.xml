@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/spring-applications" />
+            <option value="$PROJECT_DIR$/spring-applications/eureka-application" />
             <option value="$PROJECT_DIR$/spring-applications/main-application" />
             <option value="$PROJECT_DIR$/spring-applications/weather-application" />
             <option value="$PROJECT_DIR$/spring-resources" />
