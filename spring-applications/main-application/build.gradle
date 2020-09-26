@@ -5,6 +5,7 @@ bootRun {
 
 jar {
     enabled = false
+    baseName = 'main-application'
 }
 
 bootJar {

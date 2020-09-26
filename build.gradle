@@ -98,14 +98,47 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.cloud:spring-cloud-config-server'
         implementation 'org.springframework.cloud:spring-cloud-starter-config'
-        // implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
         compileOnly 'org.projectlombok:lombok'
         runtimeOnly 'com.h2database:h2'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         }
+
+        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.2.5.RELEASE'
+        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.2.5.RELEASE'
+
+
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    task pathingJar(type: Jar){
+        dependsOn configurations.runtimeClasspath
+        appendix = 'pathing'
+
+        doFirst {
+            manifest {
+                attributes "Class-Path": configurations.runtimeClasspath.files.collect {
+                    it.toURL().toString().replaceFirst("file:/","/")
+                }.join(" ")
+            }
+        }
+    }
+
+    bootRun {
+        jvmArgs = rootProject.ext.jvmArgs
+        dependsOn pathingJar
+        doFirst {
+            classpath = files(sourceSets.main.output.files, pathingJar.archivePath)
+        }
     }
 
 
+}
+
+springBoot {
+    mainClassName = 'com/example/monorepo/MainApplication.java'
 }

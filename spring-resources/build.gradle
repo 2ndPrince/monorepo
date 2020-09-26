@@ -2,11 +2,10 @@ bootRun{
     enabled = false
 }
 
-bootJar {
+bootJar{
     enabled = false
 }
 
-jar {
+jar{
     enabled = true
 }
-

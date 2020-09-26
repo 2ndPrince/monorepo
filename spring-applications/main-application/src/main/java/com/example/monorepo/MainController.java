@@ -1,6 +1,7 @@
 package com.example.monorepo;
 
 import com.example.monorepo.model.User;
+import com.example.monorepo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,12 @@ public class MainController {
     @GetMapping("/weekly")
     public String makeWeeklyPlan(){
         List<Boolean> booleans = planService.canGoOutsideForWeek(0.4);
+        return booleans.toString();
+    }
+
+    @GetMapping("/feign/weekly")
+    public String makeWeeklyPlanUsingFeign(){
+        List<Boolean> booleans = planService.canGoOutsideForWeekUsingFeign(0.4);
         return booleans.toString();
     }
 }

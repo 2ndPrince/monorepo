@@ -1,0 +1,17 @@
+bootRun {
+    enabled = true
+    main = 'com.example.monorepo.EurekaServerApplication'
+}
+
+jar {
+    enabled = false
+}
+
+bootJar {
+    enabled = false
+}
+
+dependencies {
+    compile project(":spring-resources:shared-entities")
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+}
