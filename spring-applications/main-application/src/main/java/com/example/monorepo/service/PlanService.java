@@ -1,6 +1,8 @@
 package com.example.monorepo;
 
 
+import com.example.monorepo.feign.FeignPlanClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,12 @@ import java.util.List;
 
 @Service
 public class PlanService {
+    
+    private final FeignPlanClient feignPlanClient;
+
+    public PlanService(FeignPlanClient feignPlanClient) {
+        this.feignPlanClient = feignPlanClient;
+    }
 
     public List<Boolean> canGoOutsideForWeek(double threshold) {
         RestTemplate restTemplate = new RestTemplate();
@@ -30,6 +38,19 @@ public class PlanService {
         ArrayList<Double> body = new ArrayList(Arrays.asList(response.getBody()));
         ArrayList<Boolean> yesno = new ArrayList<>();
         for (Double d : body) {
+            if (d < threshold) {
+                yesno.add(true);
+            } else {
+                yesno.add(false);
+            }
+        }
+        return yesno;
+    }
+
+    public List<Boolean> canGoOutsideForWeekUsingFeign(double threshold){
+        List<Double> forecast = feignPlanClient.forecast(7);
+        ArrayList<Boolean> yesno = new ArrayList<>();
+        for (Double d : forecast) {
             if (d < threshold) {
                 yesno.add(true);
             } else {
