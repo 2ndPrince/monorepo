@@ -1,12 +1,13 @@
 package com.example.monorepo;
 
+import com.example.monorepo.drive.PUDO;
 import com.example.monorepo.model.User;
-import com.example.monorepo.service.PlanService;
+import com.example.monorepo.model.client.Client;
+import com.example.monorepo.model.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,9 @@ public class MainController {
 
     @Autowired
     PlanService planService;
+
+    @Autowired
+    ClientService clientService;
 
     @GetMapping(value = "/demo")
     public User demo(){
@@ -30,6 +34,24 @@ public class MainController {
         List<Boolean> booleans = planService.canGoOutsideForWeek(0.4);
         return booleans.toString();
     }
+
+    @GetMapping("/database/findClient")
+    public String findClientNameByGuid(@RequestParam("id") String id){
+        return clientService.getClientById(id).toString();
+    }
+
+    @PutMapping("/database/saveClient")
+    public String putClientwithNameAndGuid(@RequestParam("name") String name, @RequestParam("guid") String guid){
+        return clientService.saveClient(name, guid).toString();
+    }
+
+    @PostMapping("/drive")
+    public Double postEstimation(@RequestBody @Valid PUDO pudo, @RequestHeader("guid") String clientId){
+        Client client = clientService.getClientById(clientId);
+        Double estimate = planService.estimate(pudo, client);
+        return estimate;
+    }
+
 
     @GetMapping("/feign/weekly")
     public String makeWeeklyPlanUsingFeign(){

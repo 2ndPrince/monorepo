@@ -16,6 +16,8 @@
       <module name="monorepo.main-application.test" target="1.8" />
       <module name="monorepo.shared-entities.main" target="1.8" />
       <module name="monorepo.shared-entities.test" target="1.8" />
+      <module name="monorepo.spring-applications.eureka-application.main" target="1.8" />
+      <module name="monorepo.spring-applications.eureka-application.test" target="1.8" />
       <module name="monorepo.weather-application.main" target="1.8" />
       <module name="monorepo.weather-application.test" target="1.8" />
     </bytecodeTargetLevel>
