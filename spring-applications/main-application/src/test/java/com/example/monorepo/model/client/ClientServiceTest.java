@@ -23,8 +23,12 @@ class ClientServiceTest {
     ClientRepository clientRepository;
 
     @Test
-    @Transactional
     public void test(){
+        Integer hi = null;
+        Integer value = 5;
+        if(value.equals(hi)){
+            System.out.println("hi");
+        }
 
     }
 }

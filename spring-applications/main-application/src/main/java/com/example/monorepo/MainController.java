@@ -21,6 +21,9 @@ public class MainController {
     @Autowired
     ClientService clientService;
 
+    @Autowired
+    VehicleService vehicleService;
+
     @GetMapping(value = "/demo")
     public User demo(){
         User myUser = new User();
@@ -58,5 +61,11 @@ public class MainController {
     public String makeWeeklyPlanUsingFeign(){
         List<Boolean> booleans = planService.canGoOutsideForWeekUsingFeign(0.4);
         return booleans.toString();
+    }
+
+    @GetMapping("/vehicle")
+    public String getClientVehicle(@RequestParam("guid") String clientId){
+        Client client = clientService.getClientById(clientId);
+        return vehicleService.getMyVehicle(client).getClass().toString();
     }
 }
