@@ -5,6 +5,7 @@ import com.example.monorepo.model.User;
 import com.example.monorepo.model.client.Client;
 import com.example.monorepo.model.client.ClientService;
 import com.example.monorepo.service.PlanService;
+import com.example.monorepo.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
