@@ -9,9 +9,14 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
         </processorPath>
         <module name="monorepo.spring-resources.shared-entities.main" />
+        <module name="monorepo.spring-applications.eureka-application.main" />
+        <module name="monorepo.spring-applications.main-application.main" />
+        <module name="monorepo.spring-applications.weather-application.main" />
+        <module name="monorepo.spring-applications.main" />
+        <module name="monorepo.spring-resources.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="monorepo.main-application.main" target="1.8" />
       <module name="monorepo.main-application.test" target="1.8" />
       <module name="monorepo.shared-entities.main" target="1.8" />

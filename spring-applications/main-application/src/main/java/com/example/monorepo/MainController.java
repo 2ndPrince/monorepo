@@ -16,14 +16,15 @@ import java.util.List;
 @RequestMapping(value = "/main")
 public class MainController {
 
-    @Autowired
     PlanService planService;
-
-    @Autowired
     ClientService clientService;
-
-    @Autowired
     VehicleService vehicleService;
+
+    public MainController(PlanService planService, ClientService clientService, VehicleService vehicleService){
+        this.planService = planService;
+        this.clientService = clientService;
+        this.vehicleService = vehicleService;
+    }
 
     @GetMapping(value = "/demo")
     public User demo(){
